@@ -1,0 +1,46 @@
+create database modulo3sqlt
+go
+use modulo3sqlt
+go
+create table producto(
+id_pro varchar(5),
+categoria_pro varchar(35),
+Descripcion_pro varchar(35),
+precio_compra_pro decimal(7,2),
+precio_venta_pro decimal(7,2),
+stock int
+)
+go
+
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0001','LACTEOS','YOGURT',3.85,4.20,145)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro) values ('P0002','EMBUTIDOS','HOT DOG',7.89,12.50)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro) values ('P0003','BEBIDAS','COCA LALA',9.00,11.20)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro) values ('P0004','ENLATADOS','PEAS FRESH',5.60,7.89)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro) values ('P0005','LACTEOS','MILK LIFE',4.60,5.70)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro) values ('P0006','EMBUTIDOS','CHORIZO',3.70,4.0)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro) values ('P0007','ENLATADOS','ATUN FLORI',5.00,7.23)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0008','ENLATADOS','VANCAMPS RED',5.56,6.00,105)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0009','ENLATADOS','PEAS SAOL',5.00,7.89,67)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro) values ('P0010','LACTEOS','MILK LIFE',4.00,5.70)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro) values ('P0011','EMBUTIDOS','MORCON',3.00,4.0)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0012','ENLATADOS','CONSERVA YASTA',5.00,7.23,15)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0013','ENLATADOS','CHILI PERES',5.70,6.00,15)
+GO
+
+select * from producto
+
+-------ISNULL
+
+declare @var1 varchar(15), @var2 varchar(15), @var3 varchar(15)
+set @var1=null
+set @var2= null
+set @var3='ROL'
+
+select isnull(@var3,@var1)
+
+select coalesce(@var1,@var3,@var2)
+
+
+
+select categoria_pro,Descripcion_pro,precio_venta_pro,coalesce(stock,'0') [isNULL/COALESCE] from producto 
+

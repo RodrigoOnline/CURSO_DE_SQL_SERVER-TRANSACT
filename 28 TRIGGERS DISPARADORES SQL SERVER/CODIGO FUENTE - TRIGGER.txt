@@ -1,0 +1,32 @@
+select * from producto 
+--------------------------------------------------
+create table ventas(
+cod_V varchar(5),
+id_pro varchar(5),
+precio_venta decimal(7,2),
+cantidad int
+) 
+
+
+alter trigger tg_venta
+on ventas for insert
+as
+declare @codigo varchar(5),@cantidad int
+select @codigo = id_pro , @cantidad=cantidad from inserted
+update producto set stock=stock-@cantidad where id_pro=@codigo
+go
+select * from producto 
+select * from ventas
+delete from ventas where cod_v='V0001'
+
+insert into ventas values('V0001','p0001',8.40,2) 
+go
+
+alter trigger Tg_eliminar
+on ventas for delete 
+as 
+print 'NO SE PUEDE ELIMINAR REGISTROS'
+rollback transaction 
+go
+
+

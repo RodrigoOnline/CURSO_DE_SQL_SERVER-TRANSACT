@@ -1,0 +1,42 @@
+---------------------------------------------------------
+-- No Olvides suscribirte a mi canal RODRIGO ONLINE ROL--
+----------------------------------------------------------
+
+declare @contador int
+set @contador=0
+while(@contador<10)
+begin
+select @contador=@contador+1
+if(@contador=5)
+begin
+break
+end
+ print @contador
+ end
+------------------------------------------
+create table empleados (
+id INT,
+Nombre varchar(25)
+)
+GO
+INSERT INTO Empleados VALUES(1,'JULIANA');
+INSERT INTO Empleados VALUES(2,'ANDREA');
+INSERT INTO Empleados VALUES(3,'RICARDO');
+INSERT INTO Empleados VALUES(4,'SAUL');
+INSERT INTO Empleados VALUES(5,'LUIS');
+INSERT INTO Empleados VALUES(6,'SHIRLEY');
+
+
+select * from empleados 
+GO
+
+DECLARE @CANTIDAD INT =(SELECT COUNT(*) FROM empleados)
+DECLARE @CONTADOR INT
+DECLARE @TEXTO VARCHAR(25)
+SET @CONTADOR=0
+WHILE(@CONTADOR<=@CANTIDAD)
+BEGIN
+SET @TEXTO= (SELECT Nombre FROM empleados WHERE ID=@CONTADOR)
+PRINT 'EMPLEADO N°'+CONVERT(VARCHAR(10), @CONTADOR) +' '+@TEXTO
+SET @CONTADOR=@CONTADOR +1
+END

@@ -1,0 +1,53 @@
+---------------------------------------------
+- Suscribete a mi canal  RODRIGO ONLINE ROL--
+---------------------------------------------
+
+
+Create Database Modulo2sqlt
+go
+use Modulo2sqlt
+go
+
+create  table Alumno(
+Cod_Alum Varchar(4) primary key,
+Nombre_Alum varchar(25)
+)
+go
+
+
+create   table Curso(
+Cod_Curso Varchar(4),
+Nombre_curso Varchar(25),
+Cod_Alum Varchar(4)
+constraint fl_Corso foreign key(Cod_Alum) references Alumno(Cod_Alum)
+)
+go
+Insert into Alumno(Cod_Alum,Nombre_Alum) values('A001','Pedro')
+Insert into Alumno(Cod_Alum,Nombre_Alum) values('A002','Rogelio')
+Insert into Alumno(Cod_Alum,Nombre_Alum) values('A003','Denis')
+Insert into Alumno(Cod_Alum,Nombre_Alum) values('A004','Kathy')
+Insert into Alumno(Cod_Alum,Nombre_Alum) values('A005','Luis')
+
+Insert into Curso(Cod_Curso,Nombre_curso,Cod_Alum) values('C001','Sql Transact','A001')
+Insert into Curso(Cod_Curso,Nombre_curso,Cod_Alum) values('C002','Visual Studio','A002')
+Insert into Curso(Cod_Curso,Nombre_curso) values('C003','PHP')
+Insert into Curso(Cod_Curso,Nombre_curso) values('C004','Spring Framework')
+Insert into Curso(Cod_Curso,Nombre_curso,Cod_Alum) values('C005','Oracle','A005')
+
+SELECT Cod_Alum,Nombre_Alum FROM ALUMNO 
+ 
+ SELECT Cod_Curso,Nombre_curso,Cod_Alum FROM Curso
+-------Inner join
+
+ SELECT Nombre_Alum,Nombre_curso,c.Cod_Alum FROM ALUMNO A INNER JOIN CURSO c on a.Cod_Alum=c.Cod_Alum
+-------Rightjoin
+
+ SELECT  Nombre_Alum,Nombre_curso FROM ALUMNO A right JOIN CURSO c on a.Cod_Alum=c.Cod_Alum
+-------Leftjoin
+
+  
+ SELECT  Nombre_Alum,Nombre_curso FROM ALUMNO A left JOIN CURSO c on a.Cod_Alum=c.Cod_Alum
+-------Full join
+
+ SELECT  Nombre_Alum,Nombre_curso FROM ALUMNO A full JOIN CURSO c on a.Cod_Alum=c.Cod_Alum
+

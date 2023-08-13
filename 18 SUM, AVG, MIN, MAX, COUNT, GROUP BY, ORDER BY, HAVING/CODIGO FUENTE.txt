@@ -1,0 +1,45 @@
+use modulo3sqlt
+go
+select * from producto 
+select sum(precio_compra_pro) as [PRECIO COMPRA] from producto
+
+select avg(precio_venta_pro) as [PRECIO VENTA]  from producto
+
+select min(stock) from producto 
+
+select max(stock) from producto
+
+select count(id_pro) from producto 
+go
+select categoria_pro,sum(precio_compra_pro) as [PRECIO COMPRA]  from producto group by categoria_pro
+
+select distinct(Descripcion_pro), id_pro from producto order by Descripcion_pro desc
+
+
+select descripcion_pro, avg(precio_venta_pro) as [PRECIO VENTA]  from producto 
+ group by descripcion_pro having precio_venta_pro>avg(precio_venta_pro)
+
+
+
+select precio_venta_pro from producto where precio_venta_pro>4.00 
+
+
+
+select precio_venta_pro from producto group by precio_venta_pro having avg(precio_venta_pro)>1.00 
+
+
+select  precio_venta_pro from producto  group by precio_venta_pro  having avg(precio_venta_pro)>4
+
+
+
+---sum
+---avg
+---min
+---max
+---count
+---group by
+---order by
+---having
+
+
+

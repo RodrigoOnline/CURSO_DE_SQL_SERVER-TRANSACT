@@ -1,0 +1,83 @@
+-----------------------------------------------------------
+-                                                         -
+- NO OLVIDEN SUSCRIBIRSE A MI CANAL -- RODRIGO ONLINE ROL -
+-                                                         -
+-----------------------------------------------------------
+
+
+Create database modulo2sqlt
+go
+
+use modulo2sqlt 
+go
+create table producto(
+id_pro varchar(5),
+categoria_pro varchar(35),
+Descripcion_pro varchar(35),
+precio_compra_pro decimal(7,2),
+precio_venta_pro decimal(7,2),
+stock int
+)
+go
+alter table producto add constraint id_pro check(id_pro like'P[0-9][0-9][0-9][0-9]') 
+go
+
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0001','LACTEOS','YOGURT',3.85,4.20,145)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0002','EMBUTIDOS','HOT DOG',7.89,12.50,100)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0003','BEBIDAS','COCA COLA',9.00,11.20,200)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0004','ENLATADOS','PEAS FRESH',5.60,7.89,67)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0005','LACTEOS','MILK LIFE',4.60,5.70,125)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0006','EMBUTIDOS','CHORIZO',3.70,4.0,75)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0007','ENLATADOS','ATUN FLORI',5.00,7.23,320)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0008','ENLATADOS','VANCAMPS FREJOL',5.56,6.00,105)
+
+GO
+select * from producto
+go
+
+----------------------------------
+---Ejercicios Con Claula WHERE----
+----------------------------------
+---Mostrar los productos que tengan la categoría de enlatados
+
+ 
+SELECT * FROM PRODUCTO WHERE categoria_pro='ENLATADOS'
+
+
+
+
+---Mostrar los productos que tengan un stock mayor a 120
+
+
+
+
+
+SELECT * FROM PRODUCTO WHERE STOCK>120
+
+
+
+---Mostrar los productos que cuyo stock sean menores e igual a 100
+
+
+
+
+SELECT * FROM PRODUCTO WHERE STOCK<=100
+
+
+
+
+---Mostrar los productos cuya categoría sea Embutidos y su precio de venta sea mayor a 5
+
+
+
+
+SELECT * FROM PRODUCTO WHERE categoria_pro= 'EMBUTIDOS' AND PRECIO_VENTA_PRO>5
+
+
+
+
+---Mostrar solo la descripción y precio de compra de los productos cuyo precio de compra sean mayores a 5
+
+
+
+SELECT DESCRIPCION_PRO , PRECIO_COMPRA_PRO FROM producto WHERE PRECIO_COMPRA_PRO>5

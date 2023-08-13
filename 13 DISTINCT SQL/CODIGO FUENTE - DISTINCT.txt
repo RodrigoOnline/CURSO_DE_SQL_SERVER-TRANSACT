@@ -1,0 +1,36 @@
+GO
+
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0008','Arturo Soto','2021-03-03',15.00)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0009','Arturo Soto','2021-03-05',900.50)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0010','Sadith Calderon','2021-03-05',54.90)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0011','Sadith Calderon','2021-04-05',14.00)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0012','Arturo Soto','2021-04-05',1000.00)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0013','Luis Cabrera','2021-05-05',12.00)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0014','Luis Cabrera','2021-07-05',15.00)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0015','Juan Garcia','2021-07-05',15.00)
+go
+
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('usb/kin',1,15.00,'B0008')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Monito - GL',1,900.00,'B0009')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Reloj GT',1,44.90,'B0010')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Protector Glass',1,10.00,'B0010')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('USB/Macth',1,14.00,'B0011')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Case Tower/JHT',1,1000.00,'B0012')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('USB / PH',1,12.00,'B0013')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('usb/kin',1,15.00,'B0014')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('usb/kin',1,15.00,'B0015')
+
+select distinct Descripcion, Datos_cli, b.N_bol from Boleta B inner join deta_boleta D on b.N_bol=d.N_bol where  datos_cli = 'Arturo Soto'
+
+
+-------Lista de clientes
+select distinct Datos_cli  from boleta
+
+
+----Dias que se realizaron ventas 
+
+select  distinct Fecha from Boleta order by Fecha
+
+
+
+select  distinct descripcion from deta_boleta

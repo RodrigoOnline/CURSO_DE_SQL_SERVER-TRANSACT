@@ -1,0 +1,5 @@
+select * from producto 
+-------------------------------
+select descripcion_pro, precio_compra_pro from  producto where precio_venta_pro >(select AVG(precio_venta_pro) from producto)
+
+select distinct(Descripcion_pro),(select count(Descripcion_pro) from producto p1  where p.Descripcion_pro =p1.Descripcion_pro ) from producto  p 

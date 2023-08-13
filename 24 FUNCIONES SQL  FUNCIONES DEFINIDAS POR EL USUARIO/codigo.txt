@@ -1,0 +1,22 @@
+create function promedios (@var1 int ,  @var2 int)
+returns int
+as
+begin
+declare @var3 int
+set @var3= (@var2+@var1)/2
+return @var3
+end
+
+select dbo.promedios(12,12)
+-------------------------------------
+
+create function f_area_tri(@b decimal(7,2),@h decimal(7,2)) 
+returns decimal
+as
+begin
+declare @respuesta decimal(7,2)=(@b * @h)/2
+return @respuesta
+end
+
+select dbo.f_area_tri(12,10)
+

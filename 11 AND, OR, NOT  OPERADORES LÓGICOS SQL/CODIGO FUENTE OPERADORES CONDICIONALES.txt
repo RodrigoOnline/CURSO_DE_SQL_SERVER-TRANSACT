@@ -1,0 +1,11 @@
+select * from producto 
+---Uso del AND
+
+Select * from producto where categoria_pro = 'lacteos' and stock>130
+
+---USO del OR
+
+Select * from producto where categoria_pro = 'Lacteos' or categoria_pro='embutidos'
+
+Select * from producto where not categoria_pro ='lacteos'
+select * from producto 

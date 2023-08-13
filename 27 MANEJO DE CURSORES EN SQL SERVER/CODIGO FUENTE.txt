@@ -1,0 +1,71 @@
+use modulo4sqlt
+go
+create table producto(
+id_pro varchar(5),
+categoria_pro varchar(35),
+Descripcion_pro varchar(35),
+precio_compra_pro decimal(7,2),
+precio_venta_pro decimal(7,2),
+stock int
+)
+go
+alter table producto add constraint id_pro check(id_pro like'P[0-9][0-9][0-9][0-9]') 
+go
+
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0001','LACTEOS','YOGURT',3.85,4.20,145)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0002','EMBUTIDOS','HOT DOG',7.89,12.50,100)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0003','BEBIDAS','COCA COLA',9.00,11.20,200)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0004','ENLATADOS','PEAS FRESH',5.60,7.89,67)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0005','LACTEOS','MILK LIFE',4.60,5.70,125)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0006','EMBUTIDOS','CHORIZO',3.70,4.0,75)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0007','ENLATADOS','ATUN FLORI',5.00,7.23,320)
+insert into producto(id_pro,categoria_pro,Descripcion_pro,precio_compra_pro,precio_venta_pro,stock) values ('P0008','ENLATADOS','VANCAMPS FREJOL',5.56,6.00,105)
+
+GO
+go
+alter table producto add descuento decimal(7,2)
+go
+---------
+declare recorrer_tabla cursor
+for select * from producto 
+
+open recorrer_tabla
+
+fetch next from recorrer_tabla
+
+close recorrer_tabla
+
+deallocate recorrer_tabla
+
+-----------------------
+declare recorrer_tabla cursor
+for select * from producto 
+
+open recorrer_tabla
+
+fetch next from recorrer_tabla
+while @@FETCH_STATUS=0
+fetch next from recorrer_tabla
+close recorrer_tabla
+deallocate recorrer_tabla
+
+-------------------------------
+asignar descuento a los productos cuyo precio venta sean mayores a 7
+
+declare @id varchar(5),@precio_v decimal(7,2),@desc decimal(7,2)
+declare descuento cursor 
+for select id_pro,precio_venta_pro from producto
+open descuento
+fetch descuento into @id,@precio_v
+while @@FETCH_STATUS=0
+begin
+set @desc=@precio_v*0.10
+update producto set descuento=@desc where id_pro=@id
+fetch descuento into @id,@precio_v
+end
+close descuento
+deallocate descuento
+
+
+
+

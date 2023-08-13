@@ -1,0 +1,16 @@
+declare @var1 varchar(25),@mostrar varchar(25)
+set @var1='Rol'
+set @mostrar=( case @var1
+when 'ROL' then 'Rodigo Online Rol'
+when 'sql' then 'Curso de sql desde cero'
+else 'Datos no reconocidos'
+end
+)
+print @mostrar
+
+--------------------
+
+
+select descripcion_pro, isnull(case isnull(stock,'0') when 0 then 'RECARGAR!!' end,'En STOCK') as ESTADO from producto
+
+

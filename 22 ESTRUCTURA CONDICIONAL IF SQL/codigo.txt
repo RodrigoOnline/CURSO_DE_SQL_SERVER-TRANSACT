@@ -1,0 +1,16 @@
+declare @Iniciales varchar(10)
+set @Iniciales='SQL'
+if(@Iniciales='ROL') 
+begin
+print 'Rodrigo online'
+end
+else if (@Iniciales='SQL')
+
+begin
+
+print 'Curso de sql desde 0'
+end
+------------------------
+if exists(select stock from producto) begin
+select Descripcion_pro, stock from producto where stock>0
+end

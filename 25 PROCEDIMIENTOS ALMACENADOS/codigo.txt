@@ -1,0 +1,35 @@
+go
+create  table empleados(
+Cod varchar(3),
+Nombre varchar(35),
+apellido varchar(35),
+Correo Varchar(35)
+) 
+go
+
+ create  procedure consul 
+as 
+begin 
+select * from empleados
+end
+go
+
+
+
+create   procedure sp_emple 
+(
+@Cod varchar(3),
+@Nombre varchar(35),
+@apellido varchar(35)
+)
+as 
+begin 
+declare @texto varchar(35) 
+set @texto=(select  concat(left(@Nombre,3),RIGHT(@apellido,3),'@ROL.COM'))
+insert into empleados(Cod,Nombre,apellido,Correo) values(@Cod,@Nombre,@apellido,@texto)
+end
+go
+
+execute sp_emple '001','rodrigo','garcia'
+
+go

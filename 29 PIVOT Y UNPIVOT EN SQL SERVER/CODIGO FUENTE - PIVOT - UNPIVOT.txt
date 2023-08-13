@@ -1,0 +1,33 @@
+-------------------------------------------------------
+- NO OLVIDES SUSCRIBIRTE A MI CANAL RODRIGO ONLINE ROL-
+-------------------------------------------------------
+
+Use modulo4sqlt
+go
+
+create table Notas(
+Nombre_A varchar(35),
+Curso varchar(35),
+Notas decimal(7,2)
+)
+
+go
+insert into Notas(Nombre_A,Curso,Notas) values('Sergio Ramos','PYTHON',16)
+insert into Notas(Nombre_A,Curso,Notas) values('Ivan Marcone','PYTHON',13)
+insert into Notas(Nombre_A,Curso,Notas) values('Paul Scholes','PYTHON',19)
+
+insert into Notas(Nombre_A,Curso,Notas) values('Sergio Ramos','CONTABILIDAD',11)
+insert into Notas(Nombre_A,Curso,Notas) values('Ivan Marcone','CONTABILIDAD',09)
+insert into Notas(Nombre_A,Curso,Notas) values('Paul Scholes','CONTABILIDAD',18)
+
+insert into Notas(Nombre_A,Curso,Notas) values('Sergio Ramos','MATEMATICAII',17)
+insert into Notas(Nombre_A,Curso,Notas) values('Ivan Marcone','MATEMATICAII',10)
+insert into Notas(Nombre_A,Curso,Notas) values('Paul Scholes','MATEMATICAII',15)
+
+------PIVOT
+select * from notas
+select * from Notas pivot(max(Notas)for Curso in ([PYTHON],[CONTABILIDAD],[MATEMATICAII])  ) as pivot1
+unpivot(Notas for Curso in ([PYTHON],[CONTABILIDAD],[MATEMATICAII] )) as unpivot1
+
+
+

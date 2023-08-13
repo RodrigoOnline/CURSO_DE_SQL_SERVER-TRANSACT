@@ -1,0 +1,64 @@
+use modulo2sqlt
+go
+create table Boleta(
+N_bol varchar(5)primary key,
+Datos_cli varchar(35),
+Fecha date,
+total decimal(7,2)
+)
+go
+create table deta_boleta(
+Descripcion varchar(50),
+cantidad int,
+importe decimal(7,2),
+N_bol varchar(5)
+constraint fl_fact foreign key(N_bol) references boleta(N_bol)
+)
+go
+
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0001','Arturo Soto','2021-01-03',1232.70)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0002','Daniel Zalasar','2021-01-10',230.00)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0003','Luisa Menledez','2021-01-10',32.22)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0004','Sadith Calderon','2021-02-09',2310.10)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0005','Alejanda Mendiola','2021-02-10',2340.00)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0006','Luis Cabrera','2021-02-11',432.00)
+insert into Boleta(N_bol,Datos_cli,Fecha,total) values('B0007','Claudia Paredes','2021-03-01',121.00)
+go
+
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Memoria Ram',2,1032.00,'B0001')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Procesador CI/7',1,200.70,'B0001')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Parlante 2.0 usb',2,230.00,'B0002')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Hands Free',1,32,'B0003')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Case Tower',1,2010.10,'B0004')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Supresor Pico',1,300.00,'B0004')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Impresora C-tye',1,2340.00,'B0005')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('Reproductos MPGE',1,432.00,'B0006')
+insert into deta_boleta(Descripcion,cantidad,importe,N_bol) values('protectos Sreen /7uyt',1,121.00,'B0007')
+
+
+go
+
+----BETWEEN
+
+select * from boleta where fecha  between '2021-01-03' and '2021-02-10'
+
+
+----LIKE
+----------**[a-d]        LIKE'%[T-Z]
+----------**[abcd]     LIKE'[ENS]%'
+----------**[^a-d]      LIKE'[^A-Z]%'
+----------**[^abcd]    LIKE'[^ANS]%'
+
+
+select * from deta_boleta where Descripcion like '%free%'
+
+select * from deta_boleta where Descripcion like '%[^a-m]'
+
+----IN
+
+select Datos_cli from boleta where Fecha in('2021-01-03','2021-01-10','2021-03-01') 
+
+----EXISTS 
+
+select * from deta_boleta D where exists(select * from boleta B where b.total=d.importe)
+
